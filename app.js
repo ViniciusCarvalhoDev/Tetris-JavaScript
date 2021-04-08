@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
             timerId = null
         } else {
             desenhar()
-            timerId = setInterval(moveDown, 200)
+            timerId = setInterval(moveDown, 300)
             proximoAleatorio = Math.floor(Math.random() * pecas.length)
             mostrarPeca()
         }

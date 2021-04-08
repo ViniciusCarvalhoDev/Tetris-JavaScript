@@ -1,16 +1,22 @@
 .container {
     display: flex;
+    background-image: url('background.PNG');
+    height:1294px;
+
 }
 
 .grid {
+    margin-left: 1025px;
+    margin-top: 175px;
     width: 200px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #ACB590;
+    background-color: #AFAF56;
     border-color: #8A926F;
     border-width: 50px;
     border-radius: 5px;
+    background-blend-mode: difference;
 }
 
 .grid div{
@@ -20,12 +26,14 @@
 }
 
 .mini-grid {
+    margin-top: 175px;
     margin-left: 10px;
     width: 80px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #ACB590;
+    background-color: #AFAF56;
+    background-blend-mode: difference;
 }
 
 .tetromino {
