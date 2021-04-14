@@ -8,7 +8,7 @@
     <title>Tetris by Vinicius Carvalho</title>
 </head>
 <body>
-    <h3>Pontos: <span id="pontuacao">0</span></h3>
+    
     <button id="play-pause">Jogar/Pausar</button>
 
     <div class="container">
@@ -225,7 +225,7 @@
             <div class="taken"></div>
         </div>
 
-        <div class="mini-grid">
+        <div class="mini-grid" id="pc">
             <div></div>
             <div></div>
             <div></div>
@@ -242,6 +242,14 @@
             <div></div>
             <div></div>
             <div></div>
+        </div>
+
+        <div class="pontuacao" id="pt" hidden>
+            <div><h3>Pts: <span id="pontuacao">0</span></h3></div>
+        </div>
+
+        <div class="linhas" id="ln" hidden>
+            <div><h3>Linhas: <span id="qntLinhas">0</span></h3></div>
         </div>
 
     </div>

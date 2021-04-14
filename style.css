@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+body {
+    font-family: 'Zen Dots', cursive;
+    background-color: #61E2FF;
+    margin: 0px;
+    height: 100vh;
+    overflow: hidden;
+}
 .container {
     display: flex;
     background-image: url('background.PNG');
@@ -16,7 +25,6 @@
     border-color: #8A926F;
     border-width: 50px;
     border-radius: 5px;
-    background-blend-mode: difference;
 }
 
 .grid div{
@@ -26,14 +34,14 @@
 }
 
 .mini-grid {
-    margin-top: 175px;
+    margin-top: 185px;
     margin-left: 10px;
     width: 80px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
     background-color: #AFAF56;
-    background-blend-mode: difference;
+
 }
 
 .tetromino {
@@ -46,4 +54,35 @@
     
     width: 20px;
     height: 20px;
+}
+
+.pontuacao {
+    width: 20px;
+    height: 20px;
+    margin-top: 340px;
+    margin-left: -80px;
+    width: 80px;
+    height: 80px;
+    background-color: #AFAF56;
+}
+
+.pontuacao div{
+    margin-left: 8px;
+    align-items:center;
+    text-align: center;
+}
+
+.linhas {
+    width: 20px;
+    height: 20px;
+    margin-top: 490px;
+    margin-left: -80px;
+    width: 80px;
+    height: 80px;
+    background-color: #AFAF56;
+}
+
+.linhas div {
+    align-items: center;
+    text-align: center;
 }

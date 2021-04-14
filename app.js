@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const grid = document.querySelector('.grid');
     let quadrados = Array.from(document.querySelectorAll('.grid div'));
     const pontuacaoDisplay = document.querySelector('#pontuacao');
+    const linhasDisplay = document.querySelector('#qntLinhas');
     const startBtn = document.querySelector('#play-pause');
     const largura = 10;
     let proximoAleatorio = 0
     let timerId
     let pontuacao = 0
+    let linhas = 0
 
     const imgs = [
         "url('bgimg.PNG')",
@@ -85,7 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (e.keyCode === 39) {
             moverParaADireita();
         } else if (e.keyCode === 40) {
-            //baixo
+            apagar()
+            prosicaoAtual += largura;
+            desenhar()
+            congelar()
         }
     }
 
@@ -207,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
 
     function mostrarPeca() {
-      
+
         miniGrid.forEach(square => {
             square.classList.remove('tetromino')
             square.style.backgroundImage = ''
@@ -218,11 +223,21 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
+    function mostarPontos() {
+        document.getElementById("pt").hidden = false;
+    }
+
+    function mostarLinhas() {
+        document.getElementById("ln").hidden = false;
+    }
+
     startBtn.addEventListener('click', () => {
         if (timerId) {
             clearInterval(timerId)
             timerId = null
         } else {
+            mostarPontos()
+            mostarLinhas()
             desenhar()
             timerId = setInterval(moveDown, 300)
             proximoAleatorio = Math.floor(Math.random() * pecas.length)
@@ -237,6 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (row.every(index => quadrados[index].classList.contains('taken'))) {
                 pontuacao += 10
                 pontuacaoDisplay.innerHTML = pontuacao
+                linhas++
+                linhasDisplay.innerHTML = linhas
                 row.forEach(index => {
                     quadrados[index].classList.remove('taken')
                     quadrados[index].classList.remove('tetromino')
@@ -251,8 +268,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function gameOver() {
         if (current.some(index => quadrados[prosicaoAtual + index].classList.contains('taken'))) {
-            pontuacaoDisplay.innerHTML = 'end'
             clearInterval(timerId)
         }
     }
+
 });
