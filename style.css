@@ -10,6 +10,7 @@ body {
 .container {
     display: flex;
     background-image: url('background.PNG');
+    z-index:1;
     height:1294px;
 
 }

@@ -5,11 +5,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const pontuacaoDisplay = document.querySelector('#pontuacao');
     const linhasDisplay = document.querySelector('#qntLinhas');
     const startBtn = document.querySelector('#play-pause');
+    const muteBtn = document.querySelector('#mute');
+
+    var isPlaying = false;
+
     const largura = 10;
     let proximoAleatorio = 0
     let timerId
     let pontuacao = 0
     let linhas = 0
+    let speed = 700
+
+    var line = new Audio('line.wav');
+    var gameover = new Audio('gameover.wav');
+    var fall = new Audio('fall.wav');
+
+    var backgroundSound = new Audio('Tetris.mp3');
 
     const imgs = [
         "url('bgimg.PNG')",
@@ -128,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
             desenhar();
             mostrarPeca();
             adicionarPontuacao();
+            isPlaying = false;
+            fall.play();
             gameOver();
         }
     }
@@ -194,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         current = pecas[random][rotacaoAtual];
-        checarPosicaoDeRotacao();
+        checarPosicaoDeRotacao(prosicaoAtual);
         desenhar()
     }
 
@@ -235,22 +248,31 @@ document.addEventListener("DOMContentLoaded", () => {
         if (timerId) {
             clearInterval(timerId)
             timerId = null
+            isPlaying = false;
+            backgroundSound.pause();
         } else {
             mostarPontos()
             mostarLinhas()
             desenhar()
-            timerId = setInterval(moveDown, 300)
+            timerId = setInterval(moveDown, speed)
             proximoAleatorio = Math.floor(Math.random() * pecas.length)
             mostrarPeca()
+            isPlaying = true;
+            backgroundSound.play();
         }
     });
 
     function adicionarPontuacao() {
+
+        fall.play();
+        aumentarDificuldade(pontuacao);
+
         for (let i = 0; i < 199; i += largura) {
             const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
 
             if (row.every(index => quadrados[index].classList.contains('taken'))) {
-                pontuacao += 10
+                pontuacao += 5
+                line.play();
                 pontuacaoDisplay.innerHTML = pontuacao
                 linhas++
                 linhasDisplay.innerHTML = linhas
@@ -268,8 +290,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function gameOver() {
         if (current.some(index => quadrados[prosicaoAtual + index].classList.contains('taken'))) {
+            gameover.play();
+            backgroundSound.pause();
             clearInterval(timerId)
         }
+    }
+
+    muteBtn.addEventListener('click', () => {
+        if (backgroundSound.paused && isPlaying == true) {
+            backgroundSound.play();
+        } else {
+            backgroundSound.pause();
+        }
+
+    });
+
+    function aumentarDificuldade(pontuacao) {
+        if (pontuacao > 50) {
+            speed -= 100
+        } else if (pontuacao > 100) {
+            speed -= 100
+        } else if (pontuacao > 150) {
+
+        } else if (pontuacao > 200) {
+            speed -= 100
+        } else if (pontuacao > 250) {
+            speed -= 100
+        } else if (pontuacao > 300) {
+            speed -= 100
+        }
+
     }
 
 });
