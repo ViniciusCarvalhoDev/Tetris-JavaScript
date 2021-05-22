@@ -6,8 +6,8 @@ body {
     margin: 0px;
     height: 100vh;
     overflow: hidden;
-    width: 1204px;
-    height: 652px;
+    min-width: 1920px;
+    min-height: 1080px;
 }
 .container {
     display: flex;
