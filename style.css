@@ -6,12 +6,10 @@ body {
     margin: 0px;
     height: 100vh;
     overflow: hidden;
-    min-height: 720px;
-    min-width: 1080px;
 }
 .container {
     display: flex;
-    background-image: url('background.PNG');
+    background-image: url('background.png');
     z-index:1;
     height:1294px;
 
@@ -49,7 +47,7 @@ body {
 
 .tetromino {
     background-color: blue;
-    background-image: url("bgimg.PNG");
+    background-image: url("bgimg.png");
     background-size: 20px 20px;
 }
 
